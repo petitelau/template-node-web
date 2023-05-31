@@ -17,6 +17,21 @@ const logMiddleware = require("./middlewares/log");
 // Create the Express application
 const app = express();
 
+// Add Access-Control-Allow-Origin
+// Front -end should have header: Origin with same server as here
+/*app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://testchatbot-laura.web.app");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, OPTIONS"
+    );
+    next();
+});*/
+
 // --- configuring express ---
 app.use(express.json()); // parse requests of content-type - application/json
 
