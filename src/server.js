@@ -1,7 +1,6 @@
 const chalk = require("chalk");
 const pathParse = require("path-parse");
 const yargs = require("yargs")(process.argv.slice(2));
-
 const { appProperties } = require("./config/app.config");
 
 // === yargs settings ===
@@ -26,7 +25,11 @@ yargs
   );
 const argv = yargs.argv;
 
-const app = require("./app");
+// web socket
+const port = Number(process.env.PORT || argv.port)
+const app = require("./app")
+const wss = require("./wss")
+wss.init(port+1)
 
 // === starting the server ===
 app.listen(process.env.PORT || argv.port, () => {
